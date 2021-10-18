@@ -10,22 +10,27 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Wolf.Utility.Core.Persistence.EntityFramework;
+using Wolf.Utility.Core.Startup;
+using Wolf.Utility.Core.Startup.Modules;
 
 namespace TimeTracker.Api.Persistence
 {
-    public class Startup
+    public class Startup : ModularStartup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration) : base(configuration)
         {
-            Configuration = configuration;
+            AddModule(new NLogStartupModule());
+            AddModule(new SwaggerStartupModule());
+            //AddModule(new EntityFrameworkStartupModule());
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            SetupServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +51,8 @@ namespace TimeTracker.Api.Persistence
             {
                 endpoints.MapControllers();
             });
+
+            SetupApplication(app);
         }
     }
 }
