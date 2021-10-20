@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TimeTracker.Api.Persistence.EntityFrameworkCore;
 using Wolf.Utility.Core.Persistence.EntityFramework;
 using Wolf.Utility.Core.Startup;
 using Wolf.Utility.Core.Startup.Modules;
@@ -18,11 +20,13 @@ namespace TimeTracker.Api.Persistence
 {
     public class Startup : ModularStartup
     {
+        private const string CONNECTIONSTRINGNAME = "mainDb";
         public Startup(IConfiguration configuration) : base(configuration)
         {
             AddModule(new NLogStartupModule());
             AddModule(new SwaggerStartupModule());
-            //AddModule(new EntityFrameworkStartupModule());
+            AddModule(new EntityFrameworkStartupModule<TimeTrackerContext, TimeTrackerHandler>(
+                options => options.UseSqlite(Configuration.GetConnectionString(CONNECTIONSTRINGNAME))));
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.

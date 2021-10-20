@@ -26,24 +26,31 @@ namespace TimeTracker.Api.Persistence.Controllers
             logger.SetCaller(nameof(UserController));
         }
 
-        public override Task<IActionResult> Delete(User entity)
+        public override async Task<IActionResult> Delete(User entity)
+        {
+            var result = await handler.Delete(entity);
+
+            if (result) return new OkResult();
+            return new StatusCodeResult(304); // Returns Status code 304, Not Modified.
+        }
+
+        public override async Task<ActionResult<IEnumerable<User>>> Get([FromQuery]User entity)
+        {
+            var result = await handler.FindMultiple(entity);
+
+            return new OkObjectResult(result);
+        }
+
+        public override async Task<ActionResult<User>> Post(User entity)
         {
             throw new NotImplementedException();
         }
 
-        public override Task<ActionResult<IEnumerable<User>>> Get(User entity)
+        public override async Task<ActionResult<User>> Put(User entity)
         {
-            throw new NotImplementedException();
-        }
+            var result = await handler.UpdateAndRetrieve(entity);
 
-        public override Task<ActionResult<User>> Post(User entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Task<ActionResult<User>> Put(User entity)
-        {
-            throw new NotImplementedException();
+            return new OkObjectResult(result);
         }
     }
 }

@@ -26,22 +26,22 @@ namespace TimeTracker.Api.Persistence.Controllers
             logger.SetCaller(nameof(ProjectController));
         }
 
-        public override Task<IActionResult> Delete(Project data)
+        public override async Task<IActionResult> Delete(Project data)
         {
             throw new NotImplementedException();
         }
 
-        public override Task<ActionResult<IEnumerable<Project>>> Get(Project entity)
+        public override async Task<ActionResult<IEnumerable<Project>>> Get([FromQuery] Project entity)
         {
             throw new NotImplementedException();
         }
 
-        public override Task<ActionResult<Project>> Post(Project data)
+        public override async Task<ActionResult<Project>> Post(Project data)
         {
             throw new NotImplementedException();
         }
 
-        public override Task<ActionResult<Project>> Put(Project data)
+        public override async Task<ActionResult<Project>> Put(Project data)
         {
             throw new NotImplementedException();
         }
