@@ -2,20 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TimeTracker.Core.Enums;
 using TimeTracker.Core.Models;
 
-namespace TimeTracker.Api.Persistence.Models
+namespace TimeTracker.Api.Persistence.Core.Models
 {
-    public class Resource : IResource
+    public class User : IUser
     {
-        public Resource(Project project)
+        public User(List<ProjectUser> projects)
         {
-            Project = project;
+            Projects = (ICollection<IProjectUser>)projects;
         }
 
-        public string Link { get; set; }
-        public IProject Project { get; set; }
-        public int ProjectId { get; set; }
+        public User()
+        {
+
+        }
+
+        public AccountType AccountType { get; set; }
+        public string AccountId { get; set; }
+        public ICollection<IProjectUser> Projects { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
         public int Id { get; set; }

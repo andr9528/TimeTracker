@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Frontend.Wpf", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wolf.Utility.Core", "Wolf.Utility.Core\Wolf.Utility.Core\Wolf.Utility.Core.csproj", "{A5B88620-CB70-4CCF-A261-4A96B381A7A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Core", "TimeTracker.Core\TimeTracker.Core.csproj", "{F4BC363D-FBB4-49A0-96B4-2BCD2E4ABA8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Core", "TimeTracker.Core\TimeTracker.Core.csproj", "{F4BC363D-FBB4-49A0-96B4-2BCD2E4ABA8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Api.Persistence", "TimeTracker.Api.Persistence\TimeTracker.Api.Persistence.csproj", "{640BFF5B-A18F-47FA-8A59-C8E43FB149F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Api.Persistence", "TimeTracker.Api.Persistence\TimeTracker.Api.Persistence.csproj", "{640BFF5B-A18F-47FA-8A59-C8E43FB149F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Api.Persistence.Core", "TimeTracker.Api.Persistence.Core\TimeTracker.Api.Persistence.Core.csproj", "{678B8A17-EC82-485B-985C-B269423A5C5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{640BFF5B-A18F-47FA-8A59-C8E43FB149F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{640BFF5B-A18F-47FA-8A59-C8E43FB149F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{640BFF5B-A18F-47FA-8A59-C8E43FB149F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{678B8A17-EC82-485B-985C-B269423A5C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{678B8A17-EC82-485B-985C-B269423A5C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{678B8A17-EC82-485B-985C-B269423A5C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{678B8A17-EC82-485B-985C-B269423A5C5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

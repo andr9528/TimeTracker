@@ -4,8 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TimeTracker.Api.Persistence.Models;
+
+using TimeTracker.Api.Persistence.Core.Models;
 using TimeTracker.Core.Controllers;
+
+using Wolf.Utility.Core.Exceptions;
 using Wolf.Utility.Core.Logging;
 using Wolf.Utility.Core.Persistence.EntityFramework.Core;
 using Wolf.Utility.Core.Web;
@@ -16,34 +19,9 @@ namespace TimeTracker.Api.Persistence.Controllers
     [ApiController]
     public class ProjectUserController : AdvancedController<ProjectUser>, IProjectUserController<ProjectUser>
     {
-        private readonly IHandler handler;
-        private readonly ILoggerManager logger;
-
-        public ProjectUserController(IHandler handler, ILoggerManager logger) : base(handler)
+        public ProjectUserController(IHandler handler, ILoggerManager logger) : base(handler, logger)
         {
-            this.handler = handler;
-            this.logger = logger;
             logger.SetCaller(nameof(ProjectUserController));
-        }
-
-        public override async Task<IActionResult> Delete(ProjectUser entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override async Task<ActionResult<IEnumerable<ProjectUser>>> Get([FromQuery] ProjectUser entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override async Task<ActionResult<ProjectUser>> Post(ProjectUser entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override async Task<ActionResult<ProjectUser>> Put(ProjectUser entity)
-        {
-            throw new NotImplementedException();
-        }
+        }        
     }
 }

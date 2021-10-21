@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimeTracker.Core.Models;
 
-namespace TimeTracker.Api.Persistence.Models
+namespace TimeTracker.Api.Persistence.Core.Models
 {
     public class Entry : IEntry
     {
@@ -14,10 +14,15 @@ namespace TimeTracker.Api.Persistence.Models
             ProjectUser = projectUser;
         }
 
+        public Entry()
+        {
+
+        }
+
         public ICollection<IPause> Pauses { get; set; }
         public IProjectUser ProjectUser { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+        public DateTime? Start { get; set; }
+        public DateTime? End { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
         public int Id { get; set; }

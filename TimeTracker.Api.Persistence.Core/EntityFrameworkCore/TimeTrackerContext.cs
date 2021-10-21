@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
-using TimeTracker.Api.Persistence.EntityFrameworkCore.Config;
+
+using TimeTracker.Api.Persistence.Core.EntityFrameworkCore.Config;
 using Wolf.Utility.Core.Persistence.EntityFramework;
 
-namespace TimeTracker.Api.Persistence.EntityFrameworkCore
+namespace TimeTracker.Api.Persistence.Core.EntityFrameworkCore
 {
     public class TimeTrackerContext : BaseContext
     {

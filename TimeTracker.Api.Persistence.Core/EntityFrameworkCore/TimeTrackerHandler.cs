@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Wolf.Utility.Core.Persistence.EntityFramework;
 
-namespace TimeTracker.Api.Persistence.EntityFrameworkCore
+namespace TimeTracker.Api.Persistence.Core.EntityFrameworkCore
 {
     public class TimeTrackerHandler : BaseHandler<TimeTrackerContext>
     {

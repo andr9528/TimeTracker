@@ -4,22 +4,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimeTracker.Core.Models;
 
-namespace TimeTracker.Api.Persistence.Models
+namespace TimeTracker.Api.Persistence.Core.Models
 {
-    public class ProjectUser : IProjectUser
+    public class Resource : IResource
     {
-        public ProjectUser(User user, Project project, List<Entry> entries)
+        public Resource(Project project)
         {
-            User = user;
             Project = project;
-            Entries = (ICollection<IEntry>)entries;
         }
 
-        public IUser User { get; set; }
-        public int UserId { get; set; }
+        public Resource()
+        {
+
+        }
+
+        public string Link { get; set; }
         public IProject Project { get; set; }
         public int ProjectId { get; set; }
-        public ICollection<IEntry> Entries { get; set; }
+        public string Description { get; set; }
+        public string Name { get; set; }
         public int Id { get; set; }
         public byte[] Version { get; set; }
         public DateTime CreatedDate { get; set; }

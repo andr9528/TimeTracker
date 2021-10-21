@@ -13,7 +13,7 @@ namespace TimeTracker.Core.Models.Common
     /// </summary>
     public interface ICommonTimePeriode : ICommon
     {
-        DateTime Start { get; set; }
-        DateTime End { get; set; }
+        DateTime? Start { get; set; }
+        DateTime? End { get; set; }
     }
 }

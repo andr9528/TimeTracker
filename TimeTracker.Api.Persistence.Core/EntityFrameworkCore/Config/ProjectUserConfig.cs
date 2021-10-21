@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TimeTracker.Api.Persistence.Models;
+
+using TimeTracker.Api.Persistence.Core.Models;
 using Wolf.Utility.Core.Persistence.EntityFramework.Core;
 
-namespace TimeTracker.Api.Persistence.EntityFrameworkCore.Config
+namespace TimeTracker.Api.Persistence.Core.EntityFrameworkCore.Config
 {
     public class ProjectUserConfig : EntityConfig<ProjectUser>
     {

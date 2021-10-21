@@ -349,3 +349,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /TimeTracker.Frontend.Wpf/appsettings.json
+/TimeTracker.Api.Persistence/Database.db

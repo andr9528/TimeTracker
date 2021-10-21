@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimeTracker.Core.Models;
 
-namespace TimeTracker.Api.Persistence.Models
+namespace TimeTracker.Api.Persistence.Core.Models
 {
     public class Project : IProject
     {
@@ -12,6 +12,11 @@ namespace TimeTracker.Api.Persistence.Models
         {
             Users = (ICollection<IProjectUser>)users;
             Resources = (ICollection<IResource>)resources;
+        }
+
+        public Project()
+        {
+
         }
 
         public ICollection<IProjectUser> Users { get; set; }

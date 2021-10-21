@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimeTracker.Core.Models;
 
-namespace TimeTracker.Api.Persistence.Models
+namespace TimeTracker.Api.Persistence.Core.Models
 {
     public class Pause : IPause
     {
@@ -13,10 +13,15 @@ namespace TimeTracker.Api.Persistence.Models
             Entry = entry;
         }
 
+        public Pause()
+        {
+
+        }
+
         public IEntry Entry { get; set; }
         public int EntryId { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+        public DateTime? Start { get; set; }
+        public DateTime? End { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
         public int Id { get; set; }

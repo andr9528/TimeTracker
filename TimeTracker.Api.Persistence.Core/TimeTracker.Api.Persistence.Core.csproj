@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TimeTracker.Core\TimeTracker.Core.csproj" />
+    <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core\Wolf.Utility.Core.csproj" />
+  </ItemGroup>
+
+</Project>
