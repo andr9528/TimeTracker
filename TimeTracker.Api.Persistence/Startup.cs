@@ -10,8 +10,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using TimeTracker.Api.Persistence.Core.EntityFrameworkCore;
+
+using Wolf.Utility.Core.Logging;
 using Wolf.Utility.Core.Persistence.EntityFramework;
 using Wolf.Utility.Core.Startup;
 using Wolf.Utility.Core.Startup.Modules;

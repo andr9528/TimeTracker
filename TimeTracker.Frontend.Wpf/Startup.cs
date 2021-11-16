@@ -3,7 +3,8 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Wolf.Utility.Core.Persistence.EntityFramework;
+
+using Wolf.Utility.Core.Logging;
 using Wolf.Utility.Core.Startup;
 using Wolf.Utility.Core.Startup.Modules;
 using Wolf.Utility.Core.Wpf;

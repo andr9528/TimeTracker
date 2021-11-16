@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TimeTracker.Api.Persistence.Core\TimeTracker.Api.Persistence.Core.csproj" />
     <ProjectReference Include="..\TimeTracker.Core\TimeTracker.Core.csproj" />
+    <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core.Web\Wolf.Utility.Core.Web.csproj" />
     <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core\Wolf.Utility.Core.csproj" />
   </ItemGroup>
 

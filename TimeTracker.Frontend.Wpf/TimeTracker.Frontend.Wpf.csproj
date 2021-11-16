@@ -16,10 +16,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core.Logging\Wolf.Utility.Core.Logging.csproj" />
+    <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core.Startup\Wolf.Utility.Core.Startup.csproj" />
+    <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core.Wpf\Wolf.Utility.Core.Wpf.csproj" />
     <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core\Wolf.Utility.Core.csproj" />
   </ItemGroup>
 
