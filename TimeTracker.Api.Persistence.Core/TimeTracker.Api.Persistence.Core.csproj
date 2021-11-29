@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TimeTracker.Core\TimeTracker.Core.csproj" />
-    <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core\Wolf.Utility.Core.csproj" />
   </ItemGroup>
 
 </Project>

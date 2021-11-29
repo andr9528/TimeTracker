@@ -7,7 +7,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core.Persistence\Wolf.Utility.Core.Persistence.csproj" />
     <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core.Web\Wolf.Utility.Core.Web.csproj" />
-    <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core\Wolf.Utility.Core.csproj" />
   </ItemGroup>
 
 </Project>

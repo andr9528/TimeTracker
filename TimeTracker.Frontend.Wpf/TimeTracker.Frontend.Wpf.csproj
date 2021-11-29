@@ -23,7 +23,6 @@
     <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core.Logging\Wolf.Utility.Core.Logging.csproj" />
     <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core.Startup\Wolf.Utility.Core.Startup.csproj" />
     <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core.Wpf\Wolf.Utility.Core.Wpf.csproj" />
-    <ProjectReference Include="..\Wolf.Utility.Core\Wolf.Utility.Core\Wolf.Utility.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
