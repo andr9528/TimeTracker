@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +12,13 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using TimeTracker.Frontend.Wpf.Pages;
+
 using Wolf.Utility.Core.Logging;
+using Wolf.Utility.Core.Wpf.Controls;
+using Wolf.Utility.Core.Wpf.Controls.Model;
 
 namespace TimeTracker.Frontend.Wpf
 {
@@ -22,6 +28,7 @@ namespace TimeTracker.Frontend.Wpf
     public partial class MainWindow : Window
     {
         private readonly ILoggerManager logger;
+        private readonly NavigationPage navigation;
 
         public MainWindow(ILoggerManager logger)
         {
@@ -30,6 +37,26 @@ namespace TimeTracker.Frontend.Wpf
             logger.SetCaller(nameof(MainWindow));
 
             logger.LogInfo("Ready");
+
+            navigation = CreateNavigationPage();
+        }
+
+        public NavigationPage CreateNavigationPage() 
+        {
+            var pages = new List<NavigationInfo>();
+
+            var overviewLogger = App.StartupConfig.ServiceProvider.GetService<ILoggerManager>();
+            var overviewPage = new OverviewPage(overviewLogger);
+            var overviewInfo = new NavigationInfo(overviewPage);
+            pages.Add(overviewInfo);
+
+            var addProjectLogger = App.StartupConfig.ServiceProvider.GetService<ILoggerManager>();
+            var addProjectPage = new AddProjectPage(addProjectLogger);
+            var addProjectInfo = new NavigationInfo(addProjectPage);
+            pages.Add(addProjectInfo);
+
+            var navPage = new NavigationPage(pages);
+            return navPage;
         }
     }
 }
