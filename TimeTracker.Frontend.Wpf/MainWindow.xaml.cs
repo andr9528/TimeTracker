@@ -18,6 +18,7 @@ using TimeTracker.Frontend.Wpf.Pages;
 
 using Wolf.Utility.Core.Logging;
 using Wolf.Utility.Core.Wpf.Controls;
+using Wolf.Utility.Core.Wpf.Controls.Enums;
 using Wolf.Utility.Core.Wpf.Controls.Model;
 
 namespace TimeTracker.Frontend.Wpf
@@ -39,6 +40,7 @@ namespace TimeTracker.Frontend.Wpf
             logger.LogInfo("Ready");
 
             navigation = CreateNavigationPage();
+            MainFrame.Content = navigation;
         }
 
         public NavigationPage CreateNavigationPage() 
@@ -55,7 +57,8 @@ namespace TimeTracker.Frontend.Wpf
             var addProjectInfo = new NavigationInfo(addProjectPage);
             pages.Add(addProjectInfo);
 
-            var navPage = new NavigationPage(pages);
+            var navPageLogger = App.StartupConfig.ServiceProvider.GetService<ILoggerManager>();
+            var navPage = new NavigationPage(pages, navPageLogger, NavigationLocation.Left) { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch};
             return navPage;
         }
     }

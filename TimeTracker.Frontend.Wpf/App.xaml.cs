@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 
+using Wolf.Utility.Core.Logging;
+
 namespace TimeTracker.Frontend.Wpf
 {
     /// <summary>
@@ -15,16 +17,26 @@ namespace TimeTracker.Frontend.Wpf
     public partial class App : Application
     {
         public static Startup StartupConfig;
+        private readonly ILoggerManager logger;
 
         public App()
         {
             StartupConfig = new Startup();
+
+            logger = StartupConfig.ServiceProvider.GetService<ILoggerManager>();
+            logger.SetCaller(nameof(App));
+            logger.LogInfo("Ready");
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
             var mainWindow = StartupConfig.ServiceProvider.GetService<MainWindow>();            
             mainWindow.Show();
+        }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            logger.LogInfo($"Closing Application. Goodbye.");
         }
     }
 }

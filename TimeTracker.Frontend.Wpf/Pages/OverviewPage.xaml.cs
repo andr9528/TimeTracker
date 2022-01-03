@@ -31,6 +31,8 @@ namespace TimeTracker.Frontend.Wpf.Pages
             logger.SetCaller(nameof(OverviewPage));
 
             logger.LogInfo("Ready");
+
+            Title = "Overview";
         }
     }
 }

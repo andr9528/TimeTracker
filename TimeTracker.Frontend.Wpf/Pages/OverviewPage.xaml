@@ -9,6 +9,6 @@
       Title="OverviewPage">
 
     <Grid>
-        <Label Content="Hi from Overview"></Label>
+        <Label Content="Hi from Overview" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
     </Grid>
 </Page>

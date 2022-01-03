@@ -9,6 +9,6 @@
       Title="AddProjectPage">
 
     <Grid>
-        <Label Content="Hi from Add Project Page"></Label>
+        <Label Content="Hi from Add Project Page" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
     </Grid>
 </Page>

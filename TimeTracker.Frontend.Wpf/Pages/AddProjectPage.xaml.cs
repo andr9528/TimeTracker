@@ -28,9 +28,11 @@ namespace TimeTracker.Frontend.Wpf.Pages
         {
             InitializeComponent();
             this.logger = logger;
-            logger.SetCaller(nameof(OverviewPage));
+            logger.SetCaller(nameof(AddProjectPage));
 
             logger.LogInfo("Ready");
+
+            Title = "Add Project";
         }
     }
 }
