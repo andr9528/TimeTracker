@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TimeTracker.Frontend.Wpf"
              Startup="OnStartup"
-             Exit="Application_Exit">
+             Exit="OnExit">
     <Application.Resources>
          
     </Application.Resources>

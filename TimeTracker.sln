@@ -29,6 +29,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wolf.Utility.Core.Wpf", "Wo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wolf.Utility.Core", "Wolf.Utility.Core", "{926D7235-31D1-4BFF-9688-C6A291B63D9B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wolf.Utility.Core.Authentication", "Wolf.Utility.Core\Wolf.Utility.Core.Authentication\Wolf.Utility.Core.Authentication.csproj", "{FB9406C9-7970-4AD3-BF4A-BB195B39CAC3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wolf.Utility.Core.Wpf.Core", "Wolf.Utility.Core\Wolf.Utility.Core.Wpf.Core\Wolf.Utility.Core.Wpf.Core.csproj", "{79D6CA6D-4BAF-48F7-84D5-145676CB6E24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +87,14 @@ Global
 		{D981E27E-EADD-4773-B6FE-A8B9FABA1DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D981E27E-EADD-4773-B6FE-A8B9FABA1DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D981E27E-EADD-4773-B6FE-A8B9FABA1DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB9406C9-7970-4AD3-BF4A-BB195B39CAC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB9406C9-7970-4AD3-BF4A-BB195B39CAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB9406C9-7970-4AD3-BF4A-BB195B39CAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB9406C9-7970-4AD3-BF4A-BB195B39CAC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D6CA6D-4BAF-48F7-84D5-145676CB6E24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D6CA6D-4BAF-48F7-84D5-145676CB6E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D6CA6D-4BAF-48F7-84D5-145676CB6E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79D6CA6D-4BAF-48F7-84D5-145676CB6E24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +108,8 @@ Global
 		{A4973811-0025-4292-B4DA-5AE1F3CE9187} = {926D7235-31D1-4BFF-9688-C6A291B63D9B}
 		{0BD1C58D-A364-48E6-BE5E-BB012C9F64AE} = {926D7235-31D1-4BFF-9688-C6A291B63D9B}
 		{D981E27E-EADD-4773-B6FE-A8B9FABA1DD0} = {926D7235-31D1-4BFF-9688-C6A291B63D9B}
+		{FB9406C9-7970-4AD3-BF4A-BB195B39CAC3} = {926D7235-31D1-4BFF-9688-C6A291B63D9B}
+		{79D6CA6D-4BAF-48F7-84D5-145676CB6E24} = {926D7235-31D1-4BFF-9688-C6A291B63D9B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0443BDFC-FE22-415D-9098-8325A6F0E4B3}

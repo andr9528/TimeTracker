@@ -30,11 +30,12 @@ namespace TimeTracker.Frontend.Wpf
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            var mainWindow = StartupConfig.ServiceProvider.GetService<MainWindow>();            
+            var mainWindow = StartupConfig.ServiceProvider.GetService<MainWindow>();
+            mainWindow.Init();
             mainWindow.Show();
         }
 
-        private void Application_Exit(object sender, ExitEventArgs e)
+        private void OnExit(object sender, ExitEventArgs e)
         {
             logger.LogInfo($"Closing Application. Goodbye.");
         }

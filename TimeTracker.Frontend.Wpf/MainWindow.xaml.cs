@@ -18,8 +18,8 @@ using TimeTracker.Frontend.Wpf.Pages;
 
 using Wolf.Utility.Core.Logging;
 using Wolf.Utility.Core.Wpf.Controls;
-using Wolf.Utility.Core.Wpf.Controls.Enums;
 using Wolf.Utility.Core.Wpf.Controls.Model;
+using Wolf.Utility.Core.Wpf.Core.Enums;
 
 namespace TimeTracker.Frontend.Wpf
 {
@@ -38,28 +38,38 @@ namespace TimeTracker.Frontend.Wpf
             logger.SetCaller(nameof(MainWindow));
 
             logger.LogInfo("Ready");
-
-            navigation = CreateNavigationPage();
-            MainFrame.Content = navigation;
         }
 
-        public NavigationPage CreateNavigationPage() 
+        public void Init() => Task.Run(async () => await CreateNavigationPage());
+
+        public async Task CreateNavigationPage()
         {
-            var pages = new List<NavigationInfo>();
+            await Dispatcher.Invoke(async () =>
+            {
+                var pages = new List<NavigationInfo>();
 
-            var overviewLogger = App.StartupConfig.ServiceProvider.GetService<ILoggerManager>();
-            var overviewPage = new OverviewPage(overviewLogger);
-            var overviewInfo = new NavigationInfo(overviewPage);
-            pages.Add(overviewInfo);
+                var loginLogger = App.StartupConfig.ServiceProvider.GetService<ILoggerManager>();
+                var loginPage = new LoginPage(loginLogger);
+                await loginPage.Init();
+                var loginInfo = new NavigationInfo(loginPage);
+                pages.Add(loginInfo);
 
-            var addProjectLogger = App.StartupConfig.ServiceProvider.GetService<ILoggerManager>();
-            var addProjectPage = new AddProjectPage(addProjectLogger);
-            var addProjectInfo = new NavigationInfo(addProjectPage);
-            pages.Add(addProjectInfo);
+                var overviewLogger = App.StartupConfig.ServiceProvider.GetService<ILoggerManager>();
+                var overviewPage = new OverviewPage(overviewLogger);
+                var overviewInfo = new NavigationInfo(overviewPage);
+                pages.Add(overviewInfo);
 
-            var navPageLogger = App.StartupConfig.ServiceProvider.GetService<ILoggerManager>();
-            var navPage = new NavigationPage(pages, navPageLogger, NavigationLocation.Left) { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch};
-            return navPage;
+                var addProjectLogger = App.StartupConfig.ServiceProvider.GetService<ILoggerManager>();
+                var addProjectPage = new AddProjectPage(addProjectLogger);
+                var addProjectInfo = new NavigationInfo(addProjectPage);
+                pages.Add(addProjectInfo);
+
+                var navPageLogger = App.StartupConfig.ServiceProvider.GetService<ILoggerManager>();
+                var navigation = new NavigationPage(pages, navPageLogger, NavigationLocation.Left)
+                { HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch };
+
+                MainFrame.Content = navigation;
+            });
         }
     }
 }
