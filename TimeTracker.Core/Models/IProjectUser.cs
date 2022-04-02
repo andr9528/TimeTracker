@@ -14,5 +14,7 @@ namespace TimeTracker.Core.Models
         IProject Project { get; set; }
         int ProjectId { get; set; }
         ICollection<IEntry> Entries { get; set; }
+        ICollection<IProjectUserTag> Tags { get; set; }
+
     }
 }

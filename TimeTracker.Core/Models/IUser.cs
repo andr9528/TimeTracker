@@ -11,6 +11,7 @@ namespace TimeTracker.Core.Models
     {
         AccountType AccountType { get; set; }
         string AccountId { get; set; }
+        ICollection<ITag> Tags { get; set; }
         ICollection<IProjectUser> Projects { get; set; }
     }
 }

@@ -21,6 +21,7 @@ namespace TimeTracker.Api.Persistence.Core.EntityFrameworkCore.Config
             builder.HasIndex(x => new { x.AccountId, x.AccountType }, "UniqueUserIndex").IsUnique();
 
             builder.HasMany(x => (ICollection<ProjectUser>)x.Projects).WithOne(x => (User)x.User).HasForeignKey(x => x.UserId);
+            builder.HasMany(x => (ICollection<Tag>)x.Tags).WithOne(x => (User)x.User).HasForeignKey(x => x.UserId);
         }
     }
 }

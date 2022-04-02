@@ -1,28 +1,18 @@
-﻿using Newtonsoft.Json;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+
 using TimeTracker.Core.Models;
 
-namespace TimeTracker.Api.Persistence.Core.Models
+namespace TimeTracker.Frontend.Models
 {
-    public class Pause : IPause
+    public class Entry : IEntry
     {
-        [JsonConstructor]
-        public Pause(Entry entry)
-        {
-            Entry = entry;
-        }
-
-        public Pause()
-        {
-
-        }
-
-        public IEntry Entry { get; set; }
-        public int EntryId { get; set; }
+        public ICollection<IPause> Pauses { get; set; }
+        public IProjectUser ProjectUser { get; set; }
+        public int ProjectUserId { get; set; }
         public DateTime? Start { get; set; }
         public DateTime? End { get; set; }
         public string Description { get; set; }

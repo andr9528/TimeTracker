@@ -1,29 +1,15 @@
-﻿using Newtonsoft.Json;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+
 using TimeTracker.Core.Models;
 
-namespace TimeTracker.Api.Persistence.Core.Models
+namespace TimeTracker.Frontend.Models
 {
     public class ProjectUser : IProjectUser
     {
-        [JsonConstructor]
-        public ProjectUser(User user, Project project, List<Entry> entries, List<ProjectUserTag> tags)
-        {
-            User = user;
-            Project = project;
-            Entries = (ICollection<IEntry>)entries;
-            Tags = (ICollection<IProjectUserTag>)tags;
-        }
-
-        public ProjectUser()
-        {
-
-        }
-
         public IUser User { get; set; }
         public int UserId { get; set; }
         public IProject Project { get; set; }

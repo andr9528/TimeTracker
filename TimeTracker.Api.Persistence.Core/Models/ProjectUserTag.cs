@@ -3,29 +3,30 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+
 using TimeTracker.Core.Models;
 
 namespace TimeTracker.Api.Persistence.Core.Models
 {
-    public class Resource : IResource
+    public class ProjectUserTag : IProjectUserTag
     {
         [JsonConstructor]
-        public Resource(Project project)
+        public ProjectUserTag(ProjectUser project, Tag tag)
         {
             Project = project;
+            Tag = tag;
         }
-
-        public Resource()
+        public ProjectUserTag()
         {
 
         }
 
-        public string Link { get; set; }
-        public IProject Project { get; set; }
+        public IProjectUser Project { get; set; }
         public int ProjectId { get; set; }
-        public string Description { get; set; }
-        public string Name { get; set; }
+        public ITag Tag { get; set; }
+        public int TagId { get; set; }
         public int Id { get; set; }
         public byte[] Version { get; set; }
         public DateTime CreatedDate { get; set; }

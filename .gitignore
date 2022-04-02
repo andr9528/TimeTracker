@@ -350,3 +350,5 @@ MigrationBackup/
 .ionide/
 /TimeTracker.Frontend.Wpf/appsettings.json
 /TimeTracker.Api.Persistence/Database.db
+/TimeTracker.Api.Persistence/Database.db-shm
+/TimeTracker.Api.Persistence/Database.db-wal

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TimeTracker.Api.Persistence.Core.EntityFrameworkCore;
 
 namespace TimeTracker.Api.Persistence.Core.Migrations
 {
     [DbContext(typeof(TimeTrackerContext))]
-    partial class TimeTrackerContextModelSnapshot : ModelSnapshot
+    [Migration("20220402090906_AddedTagEntity")]
+    partial class AddedTagEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,6 +139,41 @@ namespace TimeTracker.Api.Persistence.Core.Migrations
                     b.ToTable("Project");
                 });
 
+            modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.ProjectTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("ProjectTagId");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Version")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("BLOB")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TagId");
+
+                    b.HasIndex(new[] { "ProjectId", "TagId" }, "UniqueProjectTagIndex")
+                        .IsUnique();
+
+                    b.ToTable("ProjectTag");
+                });
+
             modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.ProjectUser", b =>
                 {
                     b.Property<int>("Id")
@@ -170,36 +207,6 @@ namespace TimeTracker.Api.Persistence.Core.Migrations
                         .IsUnique();
 
                     b.ToTable("ProjectUser");
-                });
-
-            modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.ProjectUserTag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TagId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<byte[]>("Version")
-                        .HasColumnType("BLOB");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
-
-                    b.HasIndex("TagId");
-
-                    b.ToTable("ProjectUserTag");
                 });
 
             modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.Resource", b =>
@@ -262,9 +269,6 @@ namespace TimeTracker.Api.Persistence.Core.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Version")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
@@ -272,8 +276,6 @@ namespace TimeTracker.Api.Persistence.Core.Migrations
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Tag");
                 });
@@ -339,6 +341,25 @@ namespace TimeTracker.Api.Persistence.Core.Migrations
                     b.Navigation("Entry");
                 });
 
+            modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.ProjectTag", b =>
+                {
+                    b.HasOne("TimeTracker.Api.Persistence.Core.Models.Project", "Project")
+                        .WithMany("Tags")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TimeTracker.Api.Persistence.Core.Models.Tag", "Tag")
+                        .WithMany("Projects")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+
+                    b.Navigation("Tag");
+                });
+
             modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.ProjectUser", b =>
                 {
                     b.HasOne("TimeTracker.Api.Persistence.Core.Models.Project", "Project")
@@ -358,25 +379,6 @@ namespace TimeTracker.Api.Persistence.Core.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.ProjectUserTag", b =>
-                {
-                    b.HasOne("TimeTracker.Api.Persistence.Core.Models.ProjectUser", "Project")
-                        .WithMany("Tags")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TimeTracker.Api.Persistence.Core.Models.Tag", "Tag")
-                        .WithMany("Projects")
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Project");
-
-                    b.Navigation("Tag");
-                });
-
             modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.Resource", b =>
                 {
                     b.HasOne("TimeTracker.Api.Persistence.Core.Models.Project", "Project")
@@ -388,17 +390,6 @@ namespace TimeTracker.Api.Persistence.Core.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.Tag", b =>
-                {
-                    b.HasOne("TimeTracker.Api.Persistence.Core.Models.User", "User")
-                        .WithMany("Tags")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.Entry", b =>
                 {
                     b.Navigation("Pauses");
@@ -408,14 +399,14 @@ namespace TimeTracker.Api.Persistence.Core.Migrations
                 {
                     b.Navigation("Resources");
 
+                    b.Navigation("Tags");
+
                     b.Navigation("Users");
                 });
 
             modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.ProjectUser", b =>
                 {
                     b.Navigation("Entries");
-
-                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.Tag", b =>
@@ -426,8 +417,6 @@ namespace TimeTracker.Api.Persistence.Core.Migrations
             modelBuilder.Entity("TimeTracker.Api.Persistence.Core.Models.User", b =>
                 {
                     b.Navigation("Projects");
-
-                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }

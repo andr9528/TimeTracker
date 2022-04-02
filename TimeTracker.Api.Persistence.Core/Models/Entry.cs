@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +10,7 @@ namespace TimeTracker.Api.Persistence.Core.Models
 {
     public class Entry : IEntry
     {
+        [JsonConstructor]
         public Entry(List<Pause> pauses, ProjectUser projectUser)
         {
             Pauses = (ICollection<IPause>)pauses;

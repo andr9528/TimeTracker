@@ -1,26 +1,15 @@
-﻿using Newtonsoft.Json;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+
 using TimeTracker.Core.Models;
 
-namespace TimeTracker.Api.Persistence.Core.Models
+namespace TimeTracker.Frontend.Models
 {
     public class Resource : IResource
     {
-        [JsonConstructor]
-        public Resource(Project project)
-        {
-            Project = project;
-        }
-
-        public Resource()
-        {
-
-        }
-
         public string Link { get; set; }
         public IProject Project { get; set; }
         public int ProjectId { get; set; }
