@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 
 using Wolf.Utility.Core.Authentication.GoogleInteraction;
 using Wolf.Utility.Core.Logging;
+using Wolf.Utility.Core.Wpf.Controls;
 
 namespace TimeTracker.Frontend.Wpf.Pages
 {
@@ -26,6 +27,7 @@ namespace TimeTracker.Frontend.Wpf.Pages
     public partial class LoginPage : Page
     {
         private ILoggerManager logger;
+        private SignInButton<GoogleProfile> googleSignIn;
 
         public LoginPage(ILoggerManager logger)
         {
@@ -38,10 +40,24 @@ namespace TimeTracker.Frontend.Wpf.Pages
             Title = "Login";
         }
 
-        public async Task Init() 
+        public Task Init(Action<GoogleProfile> action, IServiceProvider provider)
         {
-            var googleAuth = App.StartupConfig.ServiceProvider.GetService<GoogleProxy>();
-            await googleAuth.GetProfileInfo();
+            Dispatcher.Invoke(() =>
+            {
+                try
+                {
+                    googleSignIn = new SignInButton<GoogleProfile>(action, provider) { Margin = new Thickness(40) };
+                    Grid.SetRow(googleSignIn, 2);
+                    Grid.SetColumn(googleSignIn, 0);
+                    LoginGrid.Children.Add(googleSignIn);
+                }
+                catch (Exception e)
+                {
+                    logger?.LogError(e.ToString());
+                    throw;
+                }
+            });
+            return Task.CompletedTask;
         }
     }
 }

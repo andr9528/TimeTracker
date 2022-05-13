@@ -21,5 +21,7 @@ namespace TimeTracker.Frontend.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public ICollection<ITag> Tags { get; set; }
+        public IUserSetting Setting { get; set; }
+        public int SettingId { get; set; }
     }
 }

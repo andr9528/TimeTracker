@@ -33,6 +33,7 @@ namespace TimeTracker.Api.Persistence.Core.EntityFrameworkCore
             modelBuilder.ApplyConfiguration(new ResourceConfig());
             modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new TagConfig());
+            modelBuilder.ApplyConfiguration(new UserSettingConfig());
         }
     }
 }

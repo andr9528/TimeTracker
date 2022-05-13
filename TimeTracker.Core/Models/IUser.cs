@@ -13,5 +13,7 @@ namespace TimeTracker.Core.Models
         string AccountId { get; set; }
         ICollection<ITag> Tags { get; set; }
         ICollection<IProjectUser> Projects { get; set; }
+        IUserSetting Setting { get; set; }
+        int SettingId { get; set; }
     }
 }

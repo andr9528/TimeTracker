@@ -1,5 +1,6 @@
 ﻿
 using TimeTracker.Core.Enums;
+using TimeTracker.Frontend.Models;
 using TimeTracker.Frontend.Proxies;
 
 using Wolf.Utility.Core.Authentication.GoogleInteraction;
@@ -18,9 +19,9 @@ namespace TimeTracker.Frontend.Wpf
             AddModule(new WpfStartupModule<MainWindow>());
             AddModule(new GoogleLoginStartupModule(Configuration));
 
-            AddModule(new ProxyStartupModule<ProjectControllerProxy>(Configuration, Controllers.Project.ToString()));
-            AddModule(new ProxyStartupModule<ProjectUserControllerProxy>(Configuration, Controllers.ProjectUser.ToString()));
-            AddModule(new ProxyStartupModule<UserControllerProxy>(Configuration, Controllers.User.ToString()));
+            AddModule(new ProxyStartupModule<ProjectControllerProxy, Project>(Configuration, Controllers.Project.ToString()));
+            AddModule(new ProxyStartupModule<ProjectUserControllerProxy, ProjectUser>(Configuration, Controllers.ProjectUser.ToString()));
+            AddModule(new ProxyStartupModule<UserControllerProxy, User>(Configuration, Controllers.User.ToString()));
 
             SetupServices();
             SetupApplication();

@@ -12,10 +12,11 @@ namespace TimeTracker.Api.Persistence.Core.Models
     public class User : IUser
     {
         [JsonConstructor]
-        public User(List<ProjectUser> projects, List<Tag> tags)
+        public User(List<ProjectUser> projects, List<Tag> tags, UserSetting setting)
         {
             Projects = (ICollection<IProjectUser>)projects;
             Tags = (ICollection<ITag>)tags;
+            Setting = setting;
         }
 
         public User()
@@ -33,5 +34,7 @@ namespace TimeTracker.Api.Persistence.Core.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public ICollection<ITag> Tags { get; set; }
+        public IUserSetting Setting { get; set; }
+        public int SettingId { get; set; }
     }
 }
